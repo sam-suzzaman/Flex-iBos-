@@ -24,7 +24,10 @@ body {
     --clr-3: #b92e2e;
     --bg-clr-1: #f2f2f2;
     --bg-clr-2: #0e0e0e;
+    --bg-clr-3: #f8f8f8;
+    --bg-clr-4: #323232;
     --border-1: #dedede;
+    --border-2: #f1f1f1;
 }
 
 /* -------------------------------
@@ -71,6 +74,141 @@ body {
 .btn-type-2:hover {
     background-color: var(--white-clr);
 }
+
+/* -------------------------------
+     NAVBAR STYLES START
+----------------------------------*/
+.navbar-wrapper {
+    background-color: var(--white-clr);
+    border-bottom: 2px solid var(--border-2);
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+}
+.navbar-wrapper .navbar-container {
+    width: 100%;
+    max-width: 75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* navbar > start col */
+.navbar-container .navbar-start > .navbar-toggler {
+    background-color: var(--bg-clr-3);
+    color: var(--primary-clr);
+    width: 2.25rem;
+    height: 2.25rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 0.3s linear;
+}
+.navbar-container .navbar-start > .navbar-toggler:hover {
+    background-color: var(--neutral-clr);
+    color: var(--white-clr);
+}
+.navbar-container .navbar-start > .navbar-toggler > .icon {
+    font-size: 1.35rem;
+}
+
+/* navbar > center col */
+.navbar-container .main-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
+.navbar-container .main-menu > .item > .link {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--primary-clr);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+}
+.navbar-container .main-menu > .item > .link.active {
+    background-color: var(--bg-clr-3);
+}
+
+/* navbar > end col */
+.navbar-container .navbar-end .lists {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    gap: 1.5rem;
+}
+.navbar-container .navbar-end .lists > .item.cart-item {
+    position: relative;
+}
+.navbar-container .navbar-end .lists > .item .cart-icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    color: var(--primary-clr);
+}
+.navbar-container .navbar-end .lists > .cart-item .cart-badge {
+    width: 1.35rem;
+    height: 1.35rem;
+    position: absolute;
+    bottom: 0px;
+    right: -5px;
+    z-index: 10;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-clr-4);
+    color: var(--white-clr);
+    font-weight: 500;
+    font-size: 0.7rem;
+}
+.navbar-container .navbar-end .lists > .item .profile {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+/* Extra Small Devices(0-576px) */
+@media screen and (max-width: 576px) {
+}
+/* Small Devices(576-768px) */
+@media screen and (max-width: 768px) {
+}
+/* Medium Devices(768-992px) */
+@media screen and (max-width: 992px) {
+    .navbar-wrapper {
+        padding: 1rem;
+    }
+    .navbar-wrapper > .navbar-container {
+        flex-direction: column;
+    }
+    .navbar-container > .navbar-start {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .navbar-container > .navbar-start .navbar-toggler {
+        display: flex;
+    }
+    .navbar-container .navbar-center {
+        display: none;
+    }
+    .navbar-container .navbar-end {
+        display: none;
+    }
+}
+/*Large Devices(992-1200px) */
+@media screen and (max-width: 1200px) {
+}
+/* Extra Large Devices(1200-1400px) */
+@media screen and (max-width: 1400px) {
+}
+/* Extra Extra Large Devices(more than 1400px) */
 
 /* -------------------------------
      AUTH PAGE STYLES START
