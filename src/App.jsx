@@ -1,8 +1,13 @@
-import { useState } from "react";
-import "./App.css";
+import LoginPage from "./page/LoginPage";
+import RegisterPage from "./page/RegisterPage";
 
 function App() {
-    return <h3>hello world</h3>;
+    return (
+        <>
+            {/* <LoginPage />
+            <RegisterPage /> */}
+        </>
+    );
 }
 
 export default App;
