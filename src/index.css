@@ -22,6 +22,7 @@ body {
     --clr-1: #0f3dde;
     --clr-2: #1e99f5;
     --clr-3: #b92e2e;
+    --clr-4: #81859f;
     --bg-clr-1: #f2f2f2;
     --bg-clr-2: #0e0e0e;
     --bg-clr-3: #f8f8f8;
@@ -433,4 +434,124 @@ body {
     width: 100%;
     max-width: 27.815rem;
     text-align: center;
+}
+
+/* -------------------------------
+     FOOTER STYLES START
+----------------------------------*/
+
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem 1.5rem 1rem;
+    background-color: var(--bg-clr-2);
+}
+.footer-wrapper > .footer-container {
+    width: 100%;
+    max-width: 75rem;
+}
+
+/* ---- Footer > Row-1 ---- */
+.footer-container .row-1 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.footer-container .row-1 .col-1 {
+    grid-column: span 4;
+}
+.footer-container .row-1 .col-2 {
+    grid-column: span 2;
+}
+.footer-container .row-1 .col-3 {
+    grid-column: span 3;
+}
+.footer-container .row-1 .col-4 {
+    grid-column: span 3;
+}
+
+.footer-container .row-1 .col-2 {
+}
+.footer-container > .row-1 .name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--white-clr);
+    margin-bottom: 1.5rem;
+}
+.footer-container > .row-1 .footer-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 0.6rem;
+}
+.footer-container > .row-1 .footer-list .list-item {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--clr-4);
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+/* ---- Footer > Row-2 ---- */
+.footer-container > .row-2 {
+    border-top: 1px solid var(--bg-clr-4);
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container > .row-2 > .col-1 .social-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+}
+.footer-container > .row-2 > .col-1 .social-list > .item {
+    color: var(--clr-4);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-container > .row-2 > .col-2 .lists {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 1.5rem;
+}
+.footer-container > .row-2 > .col-2 .lists > .list-item {
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--clr-4);
+}
+
+.footer-container > .row-2 > .col-3 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--clr-4);
+}
+.footer-container > .row-2 > .col-3 > img {
+    margin-right: 0.25rem;
+}
+
+/* ---- Footer > Row-3 ---- */
+.footer-container > .row-3 {
+    display: flex;
+    justify-content: center;
+}
+.footer-container > .row-3 > .copyright {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bg-clr-4);
 }
