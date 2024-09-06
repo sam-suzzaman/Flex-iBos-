@@ -16,14 +16,12 @@ export const useGetHook = (url) => {
 
                 const response = await fetch(url);
                 const result = await response.json();
-                console.log(result);
 
                 setIsLoading(false);
                 setIsError(false);
                 setError("");
                 setData(result);
             } catch (error) {
-                console.log(error);
                 setIsLoading(false);
                 setIsError(true);
                 setError(error?.message);

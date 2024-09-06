@@ -4,8 +4,10 @@ import avatar from "../../assets/Account.png";
 import { IoBagOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, NavLink } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 
 const Navbar = () => {
+    const { state } = useCartContext();
     return (
         <nav className="navbar-wrapper">
             <div className="navbar-container">
@@ -39,11 +41,6 @@ const Navbar = () => {
                                 blog
                             </NavLink>
                         </li>
-                        {/* <li className="item">
-                            <a href="#" className="link">
-                                blog
-                            </a>
-                        </li> */}
                     </ul>
                 </div>
                 {/* End Col */}
@@ -51,7 +48,9 @@ const Navbar = () => {
                     <ul className="lists">
                         <Link to="/cart" className="item cart-item">
                             <IoBagOutline className="cart-icon" />
-                            <span className="cart-badge">13</span>
+                            <span className="cart-badge">
+                                {state?.cart?.length || 0}
+                            </span>
                         </Link>
                         <li className="item">
                             <img

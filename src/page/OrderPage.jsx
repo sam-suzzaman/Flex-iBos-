@@ -2,8 +2,11 @@ import React from "react";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
 import OrderRow from "../components/orderPageCom/OrderRow";
+import { useCartContext } from "../context/CartContext";
 
 const OrderPage = () => {
+    const { state } = useCartContext();
+
     return (
         <section className="order-page-wrapper wrapper">
             <div className="order-page-container container">
@@ -12,8 +15,9 @@ const OrderPage = () => {
 
                     {/* order list */}
                     <div className="order-table">
-                        <OrderRow />
-                        <OrderRow />
+                        {state?.cart?.map((product) => (
+                            <OrderRow key={product?._id} product={product} />
+                        ))}
                     </div>
                 </div>
 
@@ -23,7 +27,9 @@ const OrderPage = () => {
                         <div className="cost-list">
                             <div className="item">
                                 <span className="left">Subtotal</span>
-                                <span className="right">€ 1071.00</span>
+                                <span className="right">
+                                    € {state?.subTotalPrice}
+                                </span>
                             </div>
                             <div className="item">
                                 <span className="left">shipping</span>
@@ -34,12 +40,12 @@ const OrderPage = () => {
                                     Estimated Tax
                                     <IoIosInformationCircleOutline className="icon" />
                                 </span>
-                                <span className="right">€ -</span>
+                                <span className="right">€ {state?.tax}</span>
                             </div>
                         </div>
                         <div className="total-price">
                             <span className="left">Total</span>
-                            <span className="right">€ 1071.00</span>
+                            <span className="right">€ {state?.finalPrice}</span>
                         </div>
                     </div>
                     <div className="order-btn-row">

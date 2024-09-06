@@ -112,6 +112,13 @@ body {
 .btn-type-3:hover {
     background-color: var(--secondary-clr);
 }
+.btn-type-3:disabled {
+    cursor: not-allowed;
+    background-color: var(--border-1);
+    color: var(--border-2);
+    box-shadow: none;
+    border: none;
+}
 
 /* -------------------------------
      NAVBAR STYLES START

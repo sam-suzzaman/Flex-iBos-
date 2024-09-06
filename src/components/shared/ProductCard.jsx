@@ -1,7 +1,12 @@
 import React from "react";
 import { BsHandbag } from "react-icons/bs";
+import { useCartContext } from "../../context/CartContext";
 
 const ProductCard = ({ product }) => {
+    const { state, handleItemAddToCart } = useCartContext();
+
+    let isBtnDisabled = state?.cart?.some((item) => item._id === product?._id);
+
     return (
         <div className="product-card">
             <div className="thumbnail">
@@ -17,10 +22,14 @@ const ProductCard = ({ product }) => {
                 <p className="des">{product?.description}</p>
             </div>
             <div className="footer">
-                <a href="#" className="btn-type-3">
+                <button
+                    disabled={isBtnDisabled}
+                    onClick={() => handleItemAddToCart(product)}
+                    className="btn-type-3"
+                >
                     <BsHandbag className="icon" />
                     Add to Cart
-                </a>
+                </button>
             </div>
         </div>
     );
