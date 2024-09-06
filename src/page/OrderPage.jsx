@@ -1,13 +1,22 @@
 import React from "react";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
+import OrderRow from "../components/orderPageCom/OrderRow";
+
 const OrderPage = () => {
     return (
         <section className="order-page-wrapper wrapper">
             <div className="order-page-container container">
                 <div className="left-col">
                     <h4 className="sec-title">An overview of your order</h4>
+
+                    {/* order list */}
+                    <div className="order-table">
+                        <OrderRow />
+                        <OrderRow />
+                    </div>
                 </div>
+
                 <div className="right-col">
                     <h4 className="sec-title">Order details</h4>
                     <div className="order-price-card">

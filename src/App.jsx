@@ -8,8 +8,8 @@ import RegisterPage from "./page/RegisterPage";
 function App() {
     return (
         <>
-            <ProductsPage />
-            {/* <OrderPage /> */}
+            {/* <ProductsPage /> */}
+            <OrderPage />
             {/* <Navbar /> */}
             {/* <Footer /> */}
             {/* <LoginPage />
