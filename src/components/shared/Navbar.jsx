@@ -3,6 +3,7 @@ import logo from "../../assets/Logo.png";
 import avatar from "../../assets/Account.png";
 import { IoBagOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -21,39 +22,37 @@ const Navbar = () => {
                 <div className="navbar-center">
                     <ul className="main-menu">
                         <li className="item">
-                            <a href="#" className="link active">
+                            <NavLink to="/" className="link">
                                 home
-                            </a>
+                            </NavLink>
                         </li>
                         <li className="item">
-                            <a href="#" className="link">
+                            <NavLink
+                                to="/products/rocking-chair"
+                                className="link"
+                            >
                                 products
-                            </a>
+                            </NavLink>
                         </li>
                         <li className="item">
-                            <a href="#" className="link">
-                                categories
-                            </a>
+                            <NavLink to="/blog" className="link">
+                                blog
+                            </NavLink>
                         </li>
-                        <li className="item">
-                            <a href="#" className="link">
-                                custom
-                            </a>
-                        </li>
-                        <li className="item">
+                        {/* <li className="item">
                             <a href="#" className="link">
                                 blog
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 {/* End Col */}
                 <div className="navbar-end">
                     <ul className="lists">
-                        <li className="item cart-item">
+                        <Link to="/cart" className="item cart-item">
                             <IoBagOutline className="cart-icon" />
                             <span className="cart-badge">13</span>
-                        </li>
+                        </Link>
                         <li className="item">
                             <img
                                 src={avatar}

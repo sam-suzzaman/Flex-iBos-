@@ -1,24 +1,20 @@
 import React from "react";
-import product from "../../assets/p1.png";
 import { BsHandbag } from "react-icons/bs";
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
     return (
         <div className="product-card">
             <div className="thumbnail">
-                <img src={product} alt="product photo" />
+                <img src={product?.photo} alt="product photo" />
             </div>
             <div className="content">
-                <h3 className="title">Recliner Chair Wood</h3>
+                <h3 className="title">{product?.title}</h3>
                 <div className="price-row">
-                    <span className="current">€299.00</span>
-                    <span className="old">€350.00</span>
-                    <span className="discount">30% OFF</span>
+                    <span className="current">€{product?.discountPrice}</span>
+                    <span className="old">€{product?.oldPrice}</span>
+                    <span className="discount">{product?.discount} OFF</span>
                 </div>
-                <p className="des">
-                    It has a backrest that can be tilted back, and often a
-                    footrest extended
-                </p>
+                <p className="des">{product?.description}</p>
             </div>
             <div className="footer">
                 <a href="#" className="btn-type-3">

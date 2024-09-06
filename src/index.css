@@ -855,6 +855,7 @@ body {
 .products-page-container > .right-content > .products-row > .product-card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     height: 100%;
     border-radius: 1rem;
     padding: 1rem;
