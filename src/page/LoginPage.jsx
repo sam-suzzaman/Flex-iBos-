@@ -2,9 +2,24 @@ import React, { useState } from "react";
 import AuthForm from "../components/shared/AuthForm";
 
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { Link } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
+import { useAuthContext } from "../context/AuthContext";
 
 const LoginPage = () => {
+    const { logInHandler, loading } = useAuthContext();
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = (data) => {
+        logInHandler(data);
+    };
 
     return (
         <AuthForm>
@@ -17,7 +32,7 @@ const LoginPage = () => {
             </div>
 
             {/* Form row */}
-            <form className="form-row">
+            <form className="form-row" onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-row">
                     <div className="input extend-input">
                         <label htmlFor="email">Email address</label>
@@ -25,6 +40,12 @@ const LoginPage = () => {
                             type="text"
                             placeholder="Enter your email"
                             id="email"
+                            {...register("email", {
+                                required: {
+                                    value: true,
+                                    message: "Valid email address is requird",
+                                },
+                            })}
                         />
                     </div>
                     <div className="input extend-input password">
@@ -48,6 +69,12 @@ const LoginPage = () => {
                             type={isShowPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             id="password"
+                            {...register("password", {
+                                required: {
+                                    value: true,
+                                    message: "Password is requird",
+                                },
+                            })}
                         />
                     </div>
                 </div>
@@ -57,7 +84,16 @@ const LoginPage = () => {
                     </a>
                 </div>
                 <div className="tac-row">
-                    <input type="checkbox" id="tac" />
+                    <input
+                        type="checkbox"
+                        id="tac"
+                        {...register("tc", {
+                            required: {
+                                value: true,
+                                message: "Accept all the Terms and Conditions",
+                            },
+                        })}
+                    />
                     <label htmlFor="tac">
                         I agree to the
                         <a href="#" className="link">
@@ -66,8 +102,12 @@ const LoginPage = () => {
                     </label>
                 </div>
                 <div className="btn-row">
-                    <button type="submit" className="btn-type-1">
-                        sign in
+                    <button
+                        type="submit"
+                        className="btn-type-1"
+                        disabled={loading}
+                    >
+                        {loading ? "Loading..." : "sign in"}
                     </button>
                 </div>
             </form>
@@ -76,9 +116,9 @@ const LoginPage = () => {
             <div className="form-footer">
                 <span className="info">
                     Don't have an account?
-                    <a href="#" className="link">
+                    <Link to="/register" className="link">
                         sign up
-                    </a>
+                    </Link>
                 </span>
             </div>
         </AuthForm>

@@ -8,6 +8,8 @@ import ProductsLayout from "../Layout/ProductsLayout";
 import HomePage from "../page/HomePage";
 import ProductsPage from "../page/ProductsPage";
 import OrderPage from "../page/OrderPage";
+import LoginPage from "../page/LoginPage";
+import RegisterPage from "../page/RegisterPage";
 
 // Private Routes
 
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
                         element: <ProductsPage />,
                     },
                 ],
+            },
+            {
+                path: "/login",
+                element: <LoginPage />,
+            },
+            {
+                path: "/register",
+                element: <RegisterPage />,
             },
         ],
     },

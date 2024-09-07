@@ -5,9 +5,11 @@ import { IoBagOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, NavLink } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
     const { state } = useCartContext();
+    const { user, logOutHandler } = useAuthContext();
     return (
         <nav className="navbar-wrapper">
             <div className="navbar-container">
@@ -53,12 +55,28 @@ const Navbar = () => {
                             </span>
                         </Link>
                         <li className="item">
-                            <img
-                                src={avatar}
-                                alt="profile"
-                                className="profile"
-                            />
+                            {user ? (
+                                <img
+                                    src={avatar}
+                                    alt="profile"
+                                    className="profile"
+                                />
+                            ) : (
+                                <Link to="/login" className="login">
+                                    login
+                                </Link>
+                            )}
                         </li>
+                        {user && (
+                            <li className="item">
+                                <button
+                                    className="logout-btn"
+                                    onClick={() => logOutHandler()}
+                                >
+                                    logout
+                                </button>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

@@ -3,9 +3,25 @@ import AuthForm from "../components/shared/AuthForm";
 import logo2 from "../assets/logo3.png";
 
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { Link } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
+import { useAuthContext } from "../context/AuthContext";
 
 const RegisterPage = () => {
+    const { signUpHandler, loading } = useAuthContext();
     const [isShowPassword, setIsShowPassword] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = (data) => {
+        signUpHandler(data);
+    };
 
     return (
         <AuthForm>
@@ -17,19 +33,39 @@ const RegisterPage = () => {
             </div>
 
             {/* Form row */}
-            <form className="form-row">
+            <form className="form-row" onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-row">
                     <div className="input">
                         <label htmlFor="fname">first name (optional)</label>
-                        <input type="text" placeholder="Type here" id="fname" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            id="fname"
+                            {...register("firstName")}
+                        />
                     </div>
                     <div className="input">
                         <label htmlFor="lname">last name (optional)</label>
-                        <input type="text" placeholder="Type here" id="lname" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            id="lname"
+                            {...register("lastName")}
+                        />
                     </div>
                     <div className="input extend-input">
                         <label htmlFor="email">Email address</label>
-                        <input type="text" placeholder="Type here" id="email" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            id="email"
+                            {...register("email", {
+                                required: {
+                                    value: true,
+                                    message: "Valid email address is requird",
+                                },
+                            })}
+                        />
                     </div>
                     <div className="input extend-input password">
                         {isShowPassword ? (
@@ -52,11 +88,26 @@ const RegisterPage = () => {
                             type={isShowPassword ? "text" : "password"}
                             placeholder="Type here"
                             id="password"
+                            {...register("password", {
+                                required: {
+                                    value: true,
+                                    message: "Password address is requird",
+                                },
+                            })}
                         />
                     </div>
                 </div>
                 <div className="tac-row">
-                    <input type="checkbox" id="tac" />
+                    <input
+                        type="checkbox"
+                        id="tac"
+                        {...register("tc", {
+                            required: {
+                                value: true,
+                                message: "Check all the Terms and Conditions",
+                            },
+                        })}
+                    />
                     <label htmlFor="tac">
                         I agree to the
                         <a href="#" className="link">
@@ -65,8 +116,12 @@ const RegisterPage = () => {
                     </label>
                 </div>
                 <div className="btn-row">
-                    <button type="submit" className="btn-type-1">
-                        signup
+                    <button
+                        type="submit"
+                        className="btn-type-1"
+                        disabled={loading}
+                    >
+                        {loading ? "Loading..." : "signup"}
                     </button>
                 </div>
             </form>
@@ -75,9 +130,9 @@ const RegisterPage = () => {
             <div className="form-footer">
                 <span className="info">
                     Have an account?
-                    <a href="#" className="link">
+                    <Link to="/login" className="link">
                         sign in
-                    </a>
+                    </Link>
                 </span>
             </div>
         </AuthForm>

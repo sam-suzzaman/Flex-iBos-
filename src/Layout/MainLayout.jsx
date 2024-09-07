@@ -3,6 +3,7 @@ import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import CartContextWrapper from "../context/CartContext";
 import { Toaster } from "react-hot-toast";
+import AuthContextProvider from "../context/AuthContext";
 
 const MainLayout = () => {
     const location = useLocation();
@@ -11,20 +12,22 @@ const MainLayout = () => {
 
     if (isAuthRoute || isRegisterRoute) {
         return (
-            <>
+            <AuthContextProvider>
                 <Toaster position="top-center" />
                 <Outlet />
-            </>
+            </AuthContextProvider>
         );
     } else {
         return (
             <>
-                <CartContextWrapper>
-                    <Toaster position="top-center" />
-                    <Navbar />
-                    <Outlet />
-                    <Footer />
-                </CartContextWrapper>
+                <AuthContextProvider>
+                    <CartContextWrapper>
+                        <Toaster position="top-center" />
+                        <Navbar />
+                        <Outlet />
+                        <Footer />
+                    </CartContextWrapper>
+                </AuthContextProvider>
             </>
         );
     }

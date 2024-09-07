@@ -63,6 +63,13 @@ body {
 .btn-type-1:hover {
     background-color: var(--primary-clr);
 }
+.btn-type-1:disabled {
+    cursor: not-allowed;
+    background-color: var(--border-1);
+    color: var(--secondary-clr);
+    box-shadow: none;
+    border: none;
+}
 
 .btn-type-2 {
     width: 100%;
@@ -119,6 +126,18 @@ body {
     box-shadow: none;
     border: none;
 }
+.logout-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    background-color: var(--border-1);
+    color: var(--secondary-clr);
+    border-radius: 0.25rem;
+}
 
 /* -------------------------------
      NAVBAR STYLES START
@@ -129,6 +148,10 @@ body {
     display: flex;
     justify-content: center;
     padding: 1.5rem 1rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 .navbar-wrapper .navbar-container {
     width: 100%;
@@ -215,6 +238,21 @@ body {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
+}
+.navbar-container .navbar-end .lists > .item .login {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white-clr);
+    background-color: var(--neutral-clr);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s linear;
+}
+.navbar-container .navbar-end .lists > .item .login:hover {
+    background-color: var(--secondary-clr);
 }
 
 /* Extra Small Devices(0-576px) */
