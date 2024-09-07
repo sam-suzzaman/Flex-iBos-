@@ -10,6 +10,10 @@ const OrderRow = ({ product }) => {
         handleRemoveItemFromCart,
     } = useCartContext();
 
+    const itemPrice = parseFloat(
+        (product?.quantity * product?.discountPrice).toFixed(2)
+    );
+
     return (
         <div className="row">
             <div className="inner-row-1">
@@ -54,7 +58,7 @@ const OrderRow = ({ product }) => {
                 </div>
             </div>
             <div className="inner-row-2">
-                <span className="price">€{product?.discountPrice}</span>
+                <span className="price">€{itemPrice}</span>
             </div>
         </div>
     );
